@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo de la Gente - @MRQ</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #121212; color: white; margin: 0; }
+        header { background: #673ab7; color: white; padding: 1.5rem; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .container { max-width: 500px; margin: 20px auto; padding: 15px; }
+        .post-box { background: #1e1e1e; padding: 20px; border-radius: 12px; border: 1px solid #333; }
+        textarea { width: 100%; background: #2d2d2d; color: white; border: 1px solid #444; border-radius: 8px; padding: 12px; resize: none; box-sizing: border-box; }
+        button { background: #673ab7; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin-top: 10px; font-weight: bold; width: 100%; }
+        #feed { margin-top: 25px; }
+        .post { background: #1e1e1e; padding: 15px; border-radius: 12px; margin-bottom: 15px; border-left: 5px solid #673ab7; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🌍 MUNDO DE LA GENTE</h1>
+</header>
+
+<div class="container">
+    <div class="post-box">
+        <textarea id="postInput" rows="3" placeholder="¿Qué quieres compartir con el mundo, @MRQ?"></textarea>
+        <button onclick="publicar()">PUBLICAR</button>
+    </div>
+
+    <div id="feed">
+        </div>
+</div>
+
+<script>
+    function publicar() {
+        const text = document.getElementById('postInput').value;
+        if(text.trim() === "") return;
+        
+        const feed = document.getElementById('feed');
+        const nuevoPost = document.createElement('div');
+        nuevoPost.className = 'post';
+        nuevoPost.innerHTML = `<strong>@MRQ Usuario</strong><p>${text}</p><small>${new Date().toLocaleTimeString()}</small>`;
+        
+        feed.prepend(nuevoPost);
+        document.getElementById('postInput').value = "";
+    }
+</script>
+
+</body>
+</html>
